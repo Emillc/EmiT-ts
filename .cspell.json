@@ -1,0 +1,17 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "ignorePaths": [
+    "**/.*",
+    "**/node_modules",
+    "**/settings.json",
+    "**/keybindings.json"
+  ],
+  "words": [
+    "bumpp",
+    "emillc",
+    "endregion",
+    "esno",
+    "typecheck"
+  ]
+}
