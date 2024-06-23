@@ -55,6 +55,7 @@
     "@antfu/utils": "0.7.8",
     "@types/node": "20.12.12",
     "bumpp": "9.4.1",
+    "changelogen": "0.5.5",
     "eslint": "8.57.0",
     "eslint-plugin-format": "0.1.1",
     "esno": "4.7.0",
