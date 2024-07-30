@@ -2,7 +2,6 @@
   "name": "emit-ts",
   "type": "module",
   "version": "0.0.0",
-  "packageManager": "pnpm@9.2.0",
   "description": "_description_",
   "author": {
     "name": "ChillCicada",
@@ -42,12 +41,13 @@
     "build": "unbuild",
     "dev": "unbuild --stub",
     "lint": "eslint .",
-    "prepublishOnly": "nr build",
+    "lint:fix": "eslint --fix .",
+    "prepublishOnly": "npm run build",
     "release": "bumpp && npm publish",
-    "start": "esno src/index.ts",
-    "test": "vitest",
+    "start": "bun src/index.ts",
+    "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "prepare": "simple-git-hooks"
+    "postinstall": "simple-git-hooks"
   },
   "devDependencies": {
     "@antfu/eslint-config": "2.18.1",
@@ -58,9 +58,7 @@
     "changelogen": "0.5.5",
     "eslint": "8.57.0",
     "eslint-plugin-format": "0.1.1",
-    "esno": "4.7.0",
     "lint-staged": "15.2.2",
-    "pnpm": "9.2.0",
     "rimraf": "5.0.7",
     "simple-git-hooks": "2.11.1",
     "typescript": "5.4.5",
@@ -69,9 +67,13 @@
     "vitest": "1.6.0"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
+    "pre-commit": "bun x lint-staged"
   },
   "lint-staged": {
     "*": "eslint --fix"
-  }
+  },
+  "workspaces": [
+    "packages/*",
+    "examples/*"
+  ]
 }

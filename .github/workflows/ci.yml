@@ -2,86 +2,51 @@ name: CI
 
 on:
   push:
-    branches:
-      - main
-
   pull_request:
     branches:
       - main
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
-
-      - name: Set node
-        uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-
-      - name: Setup
-        run: npm i -g @antfu/ni
-
-      - name: Install
-        run: nci
-
-      - name: Lint
-        run: nr lint
-
   typecheck:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
-
-      - name: Set node
-        uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: lts/*
+          bun-version: latest
+      - run: bun install
+      - run: bun run typecheck
 
-      - name: Setup
-        run: npm i -g @antfu/ni
-
-      - name: Install
-        run: nci
-
-      - name: Typecheck
-        run: nr typecheck
-
-  test:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        node: [lts/*]
-        os: [ubuntu-latest, windows-latest, macos-latest]
-      fail-fast: false
-
+  lint_and_format:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
-
-      - name: Set node ${{ matrix.node }}
-        uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: ${{ matrix.node }}
+          bun-version: latest
+      - run: bun install
+      - run: bun run lint:fix
 
-      - name: Setup
-        run: npm i -g @antfu/ni
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install
+      - run: bun run test
 
-      - name: Install
-        run: nci
-
-      - name: Build
-        run: nr build
-
-      - name: Test
-        run: nr test
+  cSpell:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: streetsidesoftware/cspell-action@v6
+        with:
+          incremental_files_only: true
+          config: .cspell.json
+          files: |
+            **/*.js
+            **/*.ts
+            **/*.json
+            **/*.md
