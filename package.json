@@ -50,8 +50,8 @@
     "postinstall": "simple-git-hooks"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "2.24.1",
-    "@antfu/ni": "0.22.0",
+    "@antfu/eslint-config": "2.25.0",
+    "@antfu/ni": "0.22.1",
     "@antfu/utils": "0.7.10",
     "@types/node": "22.1.0",
     "bumpp": "9.4.2",
@@ -63,7 +63,7 @@
     "simple-git-hooks": "2.11.1",
     "typescript": "5.5.4",
     "unbuild": "2.0.0",
-    "vite": "5.3.5",
+    "vite": "5.4.0",
     "vitest": "2.0.5"
   },
   "simple-git-hooks": {
