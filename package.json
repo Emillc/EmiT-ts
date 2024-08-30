@@ -50,13 +50,13 @@
     "postinstall": "simple-git-hooks"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "2.27.1",
-    "@antfu/ni": "0.22.4",
+    "@antfu/eslint-config": "2.27.3",
+    "@antfu/ni": "0.23.0",
     "@antfu/utils": "0.7.10",
-    "@types/node": "22.5.0",
+    "@types/node": "22.5.1",
     "bumpp": "9.5.2",
     "changelogen": "0.5.5",
-    "eslint": "9.9.0",
+    "eslint": "9.9.1",
     "eslint-plugin-format": "0.1.2",
     "lint-staged": "15.2.9",
     "rimraf": "6.0.1",
