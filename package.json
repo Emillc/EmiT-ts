@@ -50,10 +50,10 @@
     "postinstall": "simple-git-hooks"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "3.9.1",
-    "@antfu/ni": "0.23.0",
+    "@antfu/eslint-config": "3.9.2",
+    "@antfu/ni": "0.23.1",
     "@antfu/utils": "0.7.10",
-    "@types/node": "22.9.0",
+    "@types/node": "22.9.1",
     "bumpp": "9.8.1",
     "changelogen": "0.5.7",
     "eslint": "9.15.0",
